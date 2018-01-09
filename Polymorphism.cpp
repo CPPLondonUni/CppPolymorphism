@@ -31,3 +31,32 @@
 //BONUS-BONUS ASSIGNMENT (purely fun, requires arguably stupid tricks):
 // Delete your Bus class and make Bus an alias of Car (using/typedef)
 // but make it still pass the tests (without modifying them).
+
+class Vehicle {
+public:
+    virtual const std::string& GetType() const = 0;
+    virtual unsigned int GetMaxSpeed(bool isMPH) = 0;
+    virtual ~Vehicle() = default;
+};
+
+class Car : public Vehicle {
+    const std::string type{"car"};
+public:
+    const std::string& GetType() const {
+        return type;
+    }
+    unsigned int GetMaxSpeed(bool isMPH) {
+        return isMPH ? 155 : 249;
+    }
+};
+
+class Bus : public Vehicle {
+    const std::string type{"bus"};
+public:
+    const std::string& GetType() const {
+        return type;
+    }
+    unsigned int GetMaxSpeed(bool isMPH) {
+        return isMPH ? 50 : 80;
+    }
+};
